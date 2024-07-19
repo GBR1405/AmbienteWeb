@@ -1,0 +1,162 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+.banner {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudCUyMGZvb2R8ZW58MHx8MHx8fDA%3D'); /* https://tableo.com/wp-content/uploads/2023/05/Dishes-from-around-the-world.webp */
+    background-size: cover;
+    background-position: center;
+   
+}
+.banner h1 {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 48px;
+    font-weight: bold;
+}
+.breadcrumb {
+    position: absolute;
+    top: 45%;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #FFD700; 
+    font-size: 18px;
+}
+.breadcrumb a {
+    color: #FFD700;
+    text-decoration: none;
+}
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+.breadcrumb span {
+    margin: 0 10px;
+    color: white;
+}
+
+
+
+
+.form-container {
+    width: 100%;
+    left: 50%;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.form-container h2 {
+    text-align: center;
+}
+.form-container p {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.form-group input, .form-group textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+}
+.form-group input:focus, .form-group textarea:focus {
+    border-color: #ffa500;
+}
+.form-group input[type="submit"] {
+    background-color: orangered;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 4px;
+}
+.form-group input[type="submit"]:hover {
+    background-color: #ffa500;
+}
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+
+
+
+
+
+    .footer-container {
+        background-color: #333;
+        padding: 1% 1;
+        color: #333;
+        font-family: Arial, sans-serif;
+    }
+    .footer-content {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        max-width: 1000px;
+        margin: auto;
+        padding: 0 20px;
+    }
+    .footer-section {
+        flex: 1;
+        margin: 20px;
+    }
+    .footer-section h2 {
+        color: #ffa500;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .footer-section p, .footer-section ul, .footer-section li, .footer-section a {
+        color: #666;
+        font-size: 14px;
+        line-height: 1.6;
+        text-decoration: none;
+    }
+    .footer-section a:hover {
+        color: #ffa500;
+    }
+    .footer-section ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    
+    .footer-bottom {
+        text-align: center;
+        padding: 20px 0;
+        background-color: #333;
+        color: #ffa500;
+        font-size: 14px;
+    }
+    .footer-bottom a {
+        color: #ffa500;
+        text-decoration: none;
+    }
+    .footer-bottom a:hover {
+        text-decoration: underline;
+    }
+
