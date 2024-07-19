@@ -14,7 +14,7 @@
             </div>
             <nav class="nav">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="#">MENU</a></li>
+                    <li class="nav-item"><a href="menu.php">MENU</a></li>
                     <li class="separator">|</li>
                     <li class="nav-item"><a href="#">NEWS</a></li>
                     <li class="separator">|</li>
