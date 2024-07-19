@@ -2,7 +2,7 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     event.preventDefault();
 
     // Validación de Nombre
-    const firstName = document.getElementById('firstName').value;
+    const nombre = document.getElementById('nombre').value;
     const firstNameError = document.getElementById('firstNameError');
     if (firstName === '') {
         firstNameError.textContent = 'The text field is required.';
@@ -43,4 +43,20 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         alert('Form submitted successfully!');
         document.getElementById('contactForm').reset();
     }
+
+
+
+
 });
+
+
+
+
+
+
+
+
+
+
+
+

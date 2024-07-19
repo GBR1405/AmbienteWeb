@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TicoGourmet</title>
     <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/contacts.css">
-    <script src="./js/contacts.js" defer></script>
+    <link rel="stylesheet" href="./css/agregar_product.css">
+    <script src="./js/agregar_product.js" defer></script>
 
 
 </head>
-<body>
+<div>
     <header class="header">
         <div class="container">
             <div class="logo">
@@ -38,50 +38,37 @@
         </div>
     </header>
 
-    <div class="banner">
-        <h1> Contacts </h1>
-        <div class="breadcrumb">
-            <a href="index.php">Home</a>
-            <span>→</span>
-            <span>Contacts</span>
-        </div>
-    </div>
 
-
+    <main>
     <div class="form-container">
-    <h2>TicoGourmet</h2>
-    <p>Estamos disponibles 24 horas al día, 7 días a la semana por fax, correo electrónico o teléfono. También puede utilizar nuestro formulario de contacto rápido para hacer una pregunta sobre los servicios que ofrecemos de forma regular. Estaremos encantados de responder a sus preguntas.</p>
-    <form id="contactForm">
-        <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
-            <div class="error" id="firstNameError"></div>
-        </div>
-        <div class="form-group">
-            <label for="lastName">Apellidos</label>
-            <input type="text" id="lastName" name="lastName" placeholder="Tus apellidos" required>
-            <div class="error" id="lastNameError"></div>
-        </div>
-        <div class="form-group">
-            <label for="message">Mensaje</label>
-            <textarea id="message" name="message" rows="4" placeholder="Escribe tu mensaje aquí" required></textarea>
-            <div class="error" id="messageError"></div>
+        <section class="product-form">
+            <h2>Agregar Producto</h2>
+            <form id="productForm">
+                <label for="productName">Nombre del Producto:</label>
+                <input type="text" id="productName" required>
+                
+                <label for="productPrice">Precio:</label>
+                <input type="number" id="productPrice" required>
+                
+                <label for="productDescription">Descripción:</label>
+                <textarea id="productDescription" required></textarea>
+                
+                <button type="submit">Agregar</button>
+            </form>
+        </section>
 
-        </div>
-        <div class="form-group">
-            <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" placeholder="Escribe tu email aquí" required>
-            <div class="error" id="emailError"></div>
-        </div>
-        <div class="form-group">
-            <input type="submit" id="enviar" name = "Enviar">
-        </div>
-    </form>
+        <section class="product-list">
+            <h2>Lista de Productos</h2>
+            <ul id="productList"></ul>
+        </section>
+    </main>
 </div>
 
 
-<br>
-<br>
+
+
+
+    <br>
 <br>
 
 <footer class="footer-container">
@@ -110,10 +97,6 @@
         &copy; 2024 TicoGourmet | Deseñado por Grupo# Ambiente Web 
     </div>
 </footer>
-
-
-
-
 
     
 </body>
