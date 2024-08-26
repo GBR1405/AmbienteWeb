@@ -22,7 +22,7 @@
                     <li class="separator">|</li>
                     <li class="nav-item"><a href="#">NEWS</a></li>
                     <li class="separator">|</li>
-                    <li class="nav-item"><a href="#">CONTACTS</a></li>
+                    <li class="nav-item"><a href="contacts.php">CONTACTS</a></li>
                     <li class="separator">|</li>
                     <li class="nav-item"><a href="#">PAGES</a></li>
                 </ul>
