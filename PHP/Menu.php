@@ -28,7 +28,7 @@ function getMenu() {
             case 1: // Asumiendo 3 es Administrador
                 $menu[] = array("url" => "./usuario.php", "name" => "USUARIOS");
                 $menu[] = array("url" => "usuarios.php", "name" => "RESTAURANTES");
-                $menu[] = array("url" => "tablas.php", "name" => "TABLAS A EDITAR");
+                $menu[] = array("url" => "./EditarTablas.php", "name" => "TABLAS A EDITAR");
                 break;
 
             case 2: // Asumiendo 4 es Usuario
