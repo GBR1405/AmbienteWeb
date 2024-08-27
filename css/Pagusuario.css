@@ -1,0 +1,59 @@
+
+
+/* Encabezado de la tabla de usuarios */
+.user-table-header {
+    display: flex;
+    justify-content: space-between; /* Alinea el título a la izquierda y el botón a la derecha */
+    align-items: center;
+    margin-bottom: 10px; /* Espaciado entre el encabezado y la línea divisoria */
+    padding: 0 15px; /* Ajusta el espacio alrededor */
+}
+
+/* Estilo para el título de la tabla de usuarios */
+.user-table-title {
+    font-size: 24px; /* Tamaño del texto del título */
+    color: #333; /* Color del texto */
+    margin: 0; /* Elimina margen adicional */
+}
+
+/* Línea divisoria debajo del encabezado */
+.user-table-divider {
+    border: none;
+    border-top: 2px solid #ccc; /* Línea divisoria más gruesa y clara */
+    margin: 0 15px 15px 15px; /* Margen alrededor de la línea */
+}
+
+/* Contenedor de la tabla de usuarios */
+.table-responsive {
+    padding: 0 15px; /* Ajuste de espaciado para alinear con el encabezado */
+}
+
+/* Estilo general de la tabla de usuarios */
+.table {
+    width: 100%;
+    border-collapse: collapse; /* Bordes colapsados para apariencia limpia */
+}
+
+.table th, .table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0; /* Línea inferior para separar filas */
+}
+
+.table th {
+    background-color: #343a40; /* Fondo oscuro para encabezado */
+    color: #fff;               /* Color del texto del encabezado */
+    font-weight: bold;         /* Texto en negrita */
+}
+
+.table td {
+    background-color: #23272b; /* Fondo oscuro para celdas */
+    color: #fff;               /* Color del texto de las celdas */
+}
+
+.table tr:hover {
+    background-color: #454d55; /* Fondo gris oscuro al pasar el cursor */
+}
+
+
+
