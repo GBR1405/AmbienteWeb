@@ -19,3 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         carouselTrack.style.transform = `translateX(-${offset}px)`;
     }
 });
+document.getElementById("loginButton").addEventListener("click", function() {
+    window.location.href = "inicio_sesion.html";
+});
+

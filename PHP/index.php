@@ -1,36 +1,32 @@
+<?php
+include './Menu.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TicoGourmet</title>
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    <header class="header">
+<header class="header">
         <div class="container">
             <div class="logo">
-                <h1><a href="./index.html" class="logo-link">TicoGourmet 🍔</a></h1>
+                <h1><a href="./index.php" class="logo-link">TicoGourmet 🍔</a></h1>
             </div>
             <nav class="nav">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="#">MENU</a></li>
-                    <li class="separator">|</li>
-                    <li class="nav-item"><a href="#">CONTACTO</a></li>
-                    <li class="separator">|</li>
-                    <li class="nav-item"><a href="#">RESERVAS</a></li>
-                    <li class="separator">|</li>
-                    <li class="nav-item"><a href="#">NOSOTROS</a></li>
+                    <?php
+                    $menu = getMenu();
+                    foreach ($menu as $item) {
+                        echo '<li class="nav-item"><a href="' . $item["url"] . '">' . $item["name"] . '</a></li>';
+                        echo '<li class="separator">|</li>';
+                    }
+                    ?>
                 </ul>
             </nav>
-            <div class="right-section">
-                <div class="cart">
-                    <a href="#"><img src="https://cdn.icon-icons.com/icons2/906/PNG/512/shopping-cart_icon-icons.com_69913.png" alt="Cart" class="cart-icon"></a>
-                </div>
-                <div class="login">
-                    <button id="loginButton" type="button" class="login-button">Iniciar Sesión</button>
-                </div>
-            </div>
         </div>
     </header>
 
@@ -42,7 +38,6 @@
         </div>
     </section>
 
-    <!-- Nueva Sección -->
     <section class="categories-section">
         <h2 class="categories-title">Las categorías que tenemos</h2>
         <div class="carousel-container">
@@ -142,6 +137,6 @@
     </footer>
 
 
-    <script src="./js/index.js"></script>
+    <script src="../js/index.js"></script>
 </body>
 </html>
