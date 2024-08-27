@@ -20,6 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 document.getElementById("loginButton").addEventListener("click", function() {
-    window.location.href = "Inicio.html";
+    window.location.href = "inicio_sesion.html";
 });
 
