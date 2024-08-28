@@ -9,60 +9,60 @@ include './Menu.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrar Usuarios - TicoGourmet</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/Pagusuario.css">
-    <link rel="stylesheet" href="../css/styles.css">
-
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/usuarios.js"></script>
 </head>
 
 <body>
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <h1><a href="./index.php" class="logo-link">TicoGourmet 🍔</a></h1>
+    <header class="main-header">
+        <div class="main-container">
+            <div class="main-content">
+                <div class="logo">
+                    <h1><a href="./index.php" class="logo-link">TicoGourmet 🍔</a></h1>
+                </div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <?php
+                        $menu = getMenu();
+                        foreach ($menu as $item) {
+                            echo '<li class="nav-item"><a href="' . $item["url"] . '">' . $item["name"] . '</a></li>';
+                            echo '<li class="separator">|</li>';
+                        }
+                        ?>
+                    </ul>
+                </nav>
             </div>
-            <nav class="nav">
-                <ul class="nav-list">
-                    <?php
-                    $menu = getMenu();
-                    foreach ($menu as $item) {
-                        echo '<li class="nav-item"><a href="' . $item["url"] . '">' . $item["name"] . '</a></li>';
-                        echo '<li class="separator">|</li>';
-                    }
-                    ?>
-                </ul>
-            </nav>
         </div>
     </header>
 
-    <div class="container mt-5">
-    <div class="user-table-header">
-        <h2 class="user-table-title">Usuarios</h2>
-        <button id="add-user-btn" class="btn btn-warning">Agregar Usuario</button>
+    <!-- Contenedor principal -->
+    <div class="main-content-container">
+        <div class="container mt-5">
+            <h2 class="user-table-title">Usuarios</h2>
+            <button id="add-user-btn" class="btn btn-warning mb-3">Agregar Usuario</button>
+            <hr class="user-table-divider">
+            <div class="table-responsive mt-3">
+                <table class="table table-dark table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Email</th>
+                            <th>Teléfono</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="user-table-body">
+                        <!-- Los usuarios se cargarán dinámicamente aquí -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <hr class="user-table-divider">
-    <div class="table-responsive mt-3">
-        <table class="table table-dark table-hover">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Email</th>
-                    <th>Teléfono</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody id="user-table-body">
-                <!-- Los usuarios se cargarán dinámicamente aquí -->
-            </tbody>
-        </table>
-    </div>
-</div>
-
 
     <!-- Modal para agregar usuario -->
     <div id="add-user-modal" class="modal">
@@ -70,7 +70,7 @@ include './Menu.php';
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Agregar Usuario</h5>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" data-dismiss="modal">&times;"></button>
                 </div>
                 <div class="modal-body">
                     <form id="add-user-form">
