@@ -14,11 +14,11 @@
         <h2 style="text-align: center;">TicoGourmet<i class='bx bx-bowl-hot'></i></h2>
         
         <div class="input-box">
-            <input type="text" placeholder="Username">
+            <input type="text" placeholder="Username" id="username">
             <i class='bx bxs-user'></i>
         </div>
         <div class="input-box">
-            <input type="password" placeholder="Contraseña">
+            <input type="password" placeholder="Contraseña" id="password">
             <i class='bx bxs-lock-alt'></i>
         </div>
         <div class="remember-forget">
