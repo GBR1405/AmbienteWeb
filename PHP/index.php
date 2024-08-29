@@ -8,25 +8,30 @@ include './Menu.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TicoGourmet</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/Header.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/usuarios.js"></script>
 </head>
 <body>
-<header class="header">
-        <div class="container">
-            <div class="logo">
-                <h1><a href="./index.php" class="logo-link">TicoGourmet 🍔</a></h1>
+<header class="main-header">
+        <div class="main-container">
+            <div class="main-content">
+                <div class="logo">
+                    <h1><a href="./index.php" class="logo-link">TicoGourmet 🍔</a></h1>
+                </div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <?php
+                        $menu = getMenu();
+                        foreach ($menu as $item) {
+                            echo '<li class="nav-item"><a href="' . $item["url"] . '">' . $item["name"] . '</a></li>';
+                            echo '<li class="separator">|</li>';
+                        }
+                        ?>
+                    </ul>
+                </nav>
             </div>
-            <nav class="nav">
-                <ul class="nav-list">
-                    <?php
-                    $menu = getMenu();
-                    foreach ($menu as $item) {
-                        echo '<li class="nav-item"><a href="' . $item["url"] . '">' . $item["name"] . '</a></li>';
-                        echo '<li class="separator">|</li>';
-                    }
-                    ?>
-                </ul>
-            </nav>
         </div>
     </header>
 
@@ -40,8 +45,8 @@ include './Menu.php';
 
     <section class="categories-section">
         <h2 class="categories-title">Las categorías que tenemos</h2>
-        <div class="carousel-container">
-            <div class="carousel">
+        <div class="categories-carousel-container">
+            <div class="categories-carousel">
                 <div class="carousel-track">
                     <div class="card">
                         <img src="https://static.vecteezy.com/system/resources/thumbnails/025/076/438/small/pizza-isolated-illustration-ai-generative-png.png" alt="Pizza">
@@ -64,27 +69,27 @@ include './Menu.php';
                         <p>Comida Típica</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1689/1689219.png" alt="Comida Típica">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1689/1689219.png" alt="Bebidas">
                         <p>Bebidas</p>
                     </div>
                     <div class="card">
-                        <img src="https://images.vexels.com/media/users/3/293611/isolated/preview/05031444d08fa7d4501fa5c763c256c2-tres-piezas-de-pollo-frito-brillante.png" alt="Comida Típica">
+                        <img src="https://images.vexels.com/media/users/3/293611/isolated/preview/05031444d08fa7d4501fa5c763c256c2-tres-piezas-de-pollo-frito-brillante.png" alt="Pollo">
                         <p>Pollo</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn-icons-png.flaticon.com/512/7649/7649300.png" alt="Comida Típica">
+                        <img src="https://cdn-icons-png.flaticon.com/512/7649/7649300.png" alt="Ensaladas">
                         <p>Ensaladas</p>
                     </div>
                     <div class="card">
-                        <img src="https://www.pngall.com/wp-content/uploads/2018/04/Soup-Free-Download-PNG.png" alt="Comida Típica">
+                        <img src="https://www.pngall.com/wp-content/uploads/2018/04/Soup-Free-Download-PNG.png" alt="Sopas">
                         <p>Sopas</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn3d.iconscout.com/3d/premium/thumb/tamago-sushi-6339305-5221208.png?f=webp" alt="Comida Típica">
-                        <p>Asiatico</p>
+                        <img src="https://cdn3d.iconscout.com/3d/premium/thumb/tamago-sushi-6339305-5221208.png?f=webp" alt="Asiatico">
+                        <p>Asiático</p>
                     </div>
                     <div class="card">
-                        <img src="https://images.vexels.com/content/199351/preview/falafel-salad-arabic-food-illustration-9927d1.png" alt="Comida Típica">
+                        <img src="https://images.vexels.com/content/199351/preview/falafel-salad-arabic-food-illustration-9927d1.png" alt="Bowls">
                         <p>Bowls</p>
                     </div>
                 </div>
@@ -108,12 +113,11 @@ include './Menu.php';
         </div>
     </section>
     
-
     <footer class="footer-container">
         <div class="footer-content">
             <div class="footer-section about">
-                <h2>Sobre notrosos</h2>
-                <p>Somo una empresa comprometida con el bienestar de la cultura culinaria, enfocandonos en el Sabor Tico y la cultura en cada platillo.</p>
+                <h2>Sobre nosotros</h2>
+                <p>Somos una empresa comprometida con el bienestar de la cultura culinaria, enfocándonos en el Sabor Tico y la cultura en cada platillo.</p>
             </div>
             <div class="footer-section links">
                 <h2>Encuentra</h2>
@@ -132,11 +136,12 @@ include './Menu.php';
             </div>
         </div>
         <div class="footer-bottom">
-            &copy; 2024 TicoGourmet | Deseñado por Grupo# Ambiente Web 
+            &copy; 2024 TicoGourmet | Diseñado por Grupo# Ambiente Web 
         </div>
     </footer>
 
 
     <script src="../js/index.js"></script>
+    <link rel="stylesheet" href="../css/Header.css">
 </body>
 </html>

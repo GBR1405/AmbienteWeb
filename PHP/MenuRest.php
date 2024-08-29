@@ -16,22 +16,24 @@
 </head>
 
 <body>
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <h1><a href="./index.php" class="logo-link">TicoGourmet 🍔 . </a></h1>
+<header class="main-header">
+        <div class="main-container">
+            <div class="main-content">
+                <div class="logo">
+                    <h1><a href="./index.php" class="logo-link">TicoGourmet 🍔</a></h1>
+                </div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <?php
+                        $menu = getMenu();
+                        foreach ($menu as $item) {
+                            echo '<li class="nav-item"><a href="' . $item["url"] . '">' . $item["name"] . '</a></li>';
+                            echo '<li class="separator">|</li>';
+                        }
+                        ?>
+                    </ul>
+                </nav>
             </div>
-            <nav class="nav">
-                <ul class="nav-list">
-                    <?php
-                    $menu = getMenu();
-                    foreach ($menu as $item) {
-                        echo '<li class="nav-item"><a href="' . $item["url"] . '">' . $item["name"] . '</a></li>';
-                        echo '<li class="separator">|</li>';
-                    }
-                    ?>
-                </ul>
-            </nav>
         </div>
     </header>
 

@@ -1,0 +1,215 @@
+/* Reseteo de estilos */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Fondo de la página */
+body {
+    background-image: url('https://mrwallpaper.com/images/hd/textured-white-paper-439vozmsl9bybc8a.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Contenedor principal */
+.main-container {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.main-header {
+    background-color: white;
+    padding: 20px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.main-container .main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.main-header .logo h1 {
+    font-family: 'Brush Script MT', cursive;
+    color: #333;
+    margin: 0;
+    font-size: 36px;
+    text-decoration: none;
+}
+
+.main-header .logo-int {
+    font-family: 'Brush Script MT', cursive;
+    color: #333;
+    margin: 0;
+    font-size: 2em;
+    font-weight: bold;
+    display: block;
+}
+
+.main-header .logo-link {
+    font-family: 'Brush Script MT', cursive;
+    color: #333;
+    text-decoration: none;
+    font-size: 36px;
+}
+
+.main-header .logo-link:visited {
+    color: #333;
+}
+
+.main-header .logo-link:hover {
+    text-decoration: none;
+    color: #333;
+}
+
+.main-header .logo-link:active {
+    text-decoration: none;
+    color: #333;
+}
+
+.main-nav {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.main-nav .nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.main-nav .nav-item a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+}
+
+.main-nav .separator {
+    color: #333;
+    font-size: 18px;
+}
+
+/* Ajustes para el carrusel */
+.categories-carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.categories-carousel {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
+
+.categories-carousel .carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.categories-carousel .card {
+    flex: 0 0 10%;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+}
+
+.categories-carousel .card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* Agrega bordes redondeados si es deseado */
+}
+
+.categories-carousel .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 10; /* Asegura que los botones estén por encima del carrusel */
+}
+
+.categories-carousel .carousel-button.left {
+    left: 10px;
+}
+
+.categories-carousel .carousel-button.right {
+    right: 10px;
+}
+
+/* Ajustes para el footer */
+.footer-container {
+    background-color: #131111;
+    color: #333;
+    font-family: Arial, sans-serif;
+    padding: 20px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.footer-section {
+    flex: 1;
+    margin: 20px;
+}
+
+.footer-section h2 {
+    color: #ffa500;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-section p, 
+.footer-section ul, 
+.footer-section li, 
+.footer-section a {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: #ffa500;
+}
+
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #000000;
+    color: #ffa500;
+    font-size: 14px;
+}
+
+.footer-bottom a {
+    color: #ffa500;
+    text-decoration: none;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
+}
