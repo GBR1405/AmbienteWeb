@@ -1,4 +1,10 @@
 <?php
+// Conectar a la base de datos
+$host = "localhost";
+$user = "root";
+$password = "";
+$dbname = "ticogourmet";
+$conn = new mysqli($host, $user, $password, $dbname);
 
 // Verificar conexión
 if ($conn->connect_error) {
