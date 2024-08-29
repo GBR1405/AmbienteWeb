@@ -19,14 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const card = document.createElement('div');
                 card.className = 'restaurant-card card mb-4';
                 card.innerHTML = `
-    <div class="card-body">
-        <h5 class="card-title">${restaurant.Nombre}</h5>
-        <p class="card-text"><strong>Especialidad:</strong> ${restaurant.ID_ESPECIALIDAD}</p>
-        <p class="card-text"><strong>País:</strong> ${restaurant.ID_PAIS}</p>
-        <a href="InfoRestUser.php?id=${restaurant.ID_Restaurante}" class="btn btn-danger">Ver Detalles</a>
-    </div>
-`;
-
+                    <div class="card-body">
+                        <h5 class="card-title">${platillo.Nombre}</h5>
+                        <p class="card-text">${platillo.Descripcion}</p>
+                        <p class="card-text">Precio: $${platillo.Precio}</p>
+                    </div>
+                `;
                 cardsContainer.appendChild(card);
             });
         })
