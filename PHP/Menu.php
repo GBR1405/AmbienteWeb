@@ -15,7 +15,7 @@ function getMenu() {
         switch ($role_id) {
             case 4: // Asumiendo 1 es Restaurante
                 $menu[] = array("url" => "./infoPlatillos.php", "name" => "PLATILLOS");
-                $menu[] = array("url" => "pedidos.php", "name" => "PEDIDOS");
+                $menu[] = array("url" => "./PedidosRest.php", "name" => "PEDIDOS");
                 $menu[] = array("url" => "planilla.php", "name" => "PLANILLA");
                 $menu[] = array("url" => "reservas.php", "name" => "RESERVAS");
                 break;
@@ -34,8 +34,8 @@ function getMenu() {
             case 2: // Asumiendo 4 es Usuario
             default:
                 $menu[] = array("url" => "reservas.php", "name" => "RESERVAS");
-                $menu[] = array("url" => "cart.php", "name" => "CARRITO");
-                $menu[] = array("url" => "historial.php", "name" => "HISTORIAL");
+                $menu[] = array("url" => "./carritoHTML.php", "name" => "CARRITO");
+                $menu[] = array("url" => "./HistorialUser.php", "name" => "HISTORIAL");
                 break;
         }
 

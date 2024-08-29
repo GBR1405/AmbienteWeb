@@ -18,29 +18,24 @@ include './menu.php';
 </head>
 
 <body>
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <h1><a href="./index.php" class="logo-link">TicoGourmet 🍔</a></h1>
+<header class="main-header">
+        <div class="main-container">
+            <div class="main-content">
+                <div class="logo">
+                    <h1><a href="./index.php" class="logo-link">TicoGourmet 🍔</a></h1>
+                </div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <?php
+                        $menu = getMenu();
+                        foreach ($menu as $item) {
+                            echo '<li class="nav-item"><a href="' . $item["url"] . '">' . $item["name"] . '</a></li>';
+                            echo '<li class="separator">|</li>';
+                        }
+                        ?>
+                    </ul>
+                </nav>
             </div>
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="./MenuRest.php">MENU</a></li>
-                    <li class="separator">|</li>
-                    <li class="nav-item"><a href="contacto.php">CONTACTO</a></li>
-                    <li class="separator">|</li>
-                    <li class="nav-item"><a href="nosotros.php">NOSOTROS</a></li>
-                    <li class="separator">|</li>
-                    <li class="nav-item"><a href="reservas.php">RESERVAS</a></li>
-                    <li class="separator">|</li>
-                    <li class="nav-item"><a href="cart.php">CARRITO</a></li>
-                    <li class="separator">|</li>
-                    <li class="nav-item"><a href="historial.php">HISTORIAL</a></li>
-                    <li class="separator">|</li>
-                    <li class="nav-item"><a href="./salir.php">SALIR</a></li>
-                    <li class="separator">|</li>
-                </ul>
-            </nav>
         </div>
     </header>
 
@@ -116,6 +111,10 @@ include './menu.php';
                 dataType: 'json',
                 success: function(data) {
                     console.log(data); // Añadido para depuración
+                    if (data.error) {
+                        console.error('Error:', data.error);
+                        return;
+                    }
                     if (data.Username) {
                         $('#nombre_usuario').text(data.Username);
                         $('#direccion').text(data.Direccion);
@@ -133,15 +132,44 @@ include './menu.php';
                                 class: 'product-item'
                             });
                             div.html(`
-<img src="${platillo.Imagen}" alt="${platillo.Nombre}" style="width: 100px; height: 100px; object-fit: cover;" onerror="this.onerror=null; this.src='https://img.freepik.com/vector-gratis/dibujado-mano-dia-mundial-alimentacion_23-2148631852.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1724803200&semt=ais_hybrid';">
-    <div class="product-info">
-        <h3>${platillo.Nombre}</h3>
-        <p class="price">$${platillo.Precio.toFixed(2)}</p>
-        <p class="description">${platillo.Descripcion}</p>
-    </div>
-    <button class="edit-dish btn btn-warning" data-id="${platillo.ID_Platillo}">Añadir al carrito</button>
-`);
+                        <img src="${platillo.Imagen}" alt="${platillo.Nombre}" style="width: 100px; height: 100px; object-fit: cover;" onerror="this.onerror=null; this.src='https://img.freepik.com/vector-gratis/dibujado-mano-dia-mundial-alimentacion_23-2148631852.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1724803200&semt=ais_hybrid';">
+                        <div class="product-info">
+                            <h3>${platillo.Nombre}</h3>
+                            <p class="price">$${platillo.Precio.toFixed(2)}</p>
+                            <p class="description">${platillo.Descripcion}</p>
+                        </div>
+                        <button class="edit-dish btn btn-warning" data-id="${platillo.ID_Platillo}">Añadir al carrito</button>
+                    `);
                             productList.append(div);
+                        });
+
+                        // Maneja el clic en el botón "Añadir al carrito"
+                        $('.edit-dish').click(function() {
+                            const platilloId = $(this).data('id');
+                            $.ajax({
+                                url: '../PHP/AgregarCarrito.php',
+                                method: 'POST',
+                                data: {
+                                    platillo_id: platilloId
+                                },
+                                dataType: 'json',
+                                success: function(response) {
+                                    try {
+                                        if (response.success) {
+                                            alert('Platillo añadido al carrito.');
+                                        } else {
+                                            alert('Error al añadir el platillo al carrito: ' + response.error);
+                                        }
+                                    } catch (e) {
+                                        console.error('Error al analizar la respuesta JSON:', e);
+                                        alert('Error inesperado.');
+                                    }
+                                },
+                                error: function(xhr, status, error) {
+                                    console.error('Error en la llamada AJAX:', error);
+                                    alert('Error en la llamada AJAX.');
+                                }
+                            });
                         });
                     } else {
                         console.error('Error: No se pudieron cargar los platillos.');

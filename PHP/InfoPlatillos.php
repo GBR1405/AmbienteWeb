@@ -8,11 +8,10 @@
     <title>TicoGourmet</title>
     <link rel="stylesheet" href="../css/InfoRestaurante.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/MenuRest.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="../js/menu.js"></script>
-
+    <script src="../js/InfoRestuante.js"></script>
+    <script src="../js/Platillo.js"></script>
 </head>
 
 <body>
@@ -109,40 +108,40 @@
 
     <!-- Modal para Editar Platillo -->
     <!-- Modal para editar platillo -->
-    <div class="modal fade" id="editDishModal" tabindex="-1" aria-labelledby="editDishModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editDishModalLabel">Editar Platillo</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="editDishForm">
-                        <input type="hidden" id="editDishId" name="id">
-                        <div class="mb-3">
-                            <label for="editDishName" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="editDishName" name="name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="editDishPrice" class="form-label">Precio</label>
-                            <input type="number" class="form-control" id="editDishPrice" name="price" step="0.01" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="editDishDescription" class="form-label">Descripción</label>
-                            <textarea class="form-control" id="editDishDescription" name="description" rows="3" required></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="editDishCategory" class="form-label">Categoría</label>
-                            <select class="form-select" id="editDishCategory" name="category" required>
-                                <!-- Opciones de categoría se cargarán dinámicamente -->
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+<div class="modal fade" id="editDishModal" tabindex="-1" aria-labelledby="editDishModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editDishModalLabel">Editar Platillo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="editDishForm">
+          <input type="hidden" id="editDishId" name="id">
+          <div class="mb-3">
+            <label for="editDishName" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="editDishName" name="name" required>
+          </div>
+          <div class="mb-3">
+            <label for="editDishPrice" class="form-label">Precio</label>
+            <input type="number" class="form-control" id="editDishPrice" name="price" step="0.01" required>
+          </div>
+          <div class="mb-3">
+            <label for="editDishDescription" class="form-label">Descripción</label>
+            <textarea class="form-control" id="editDishDescription" name="description" rows="3" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="editDishCategory" class="form-label">Categoría</label>
+            <select class="form-select" id="editDishCategory" name="category" required>
+              <!-- Opciones de categoría se cargarán dinámicamente -->
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </form>
+      </div>
     </div>
+  </div>
+</div>
 
 
 

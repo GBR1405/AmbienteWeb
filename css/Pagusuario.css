@@ -224,3 +224,17 @@ body {
     background-color: #e0a800;
     border-color: #d39e00;
 }
+
+.carrito-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.carrito-divider {
+    margin: 20px 0;
+}
+
+.total-container {
+    text-align: right;
+    font-size: 1.5em;
+}
