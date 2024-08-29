@@ -13,12 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const card = document.createElement('div');
                 card.className = 'restaurant-card card mb-4';
 
+                // Asignar el ID del restaurante al atributo data-id para su uso posterior
                 card.innerHTML = `
                     <div class="card-body">
                         <h5 class="card-title">${restaurant.Nombre}</h5>
                         <p class="card-text"><strong>Especialidad:</strong> ${restaurant.ID_ESPECIALIDAD}</p>
                         <p class="card-text"><strong>País:</strong> ${restaurant.ID_PAIS}</p>
-                        <a href="#" class="btn btn-danger">Comprar</a>
+                        <a href="InfoRestUser.php?id=${restaurant.ID_Restaurante}" class="btn btn-danger">Ver Detalles</a>
                     </div>
                 `;
 

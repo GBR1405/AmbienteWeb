@@ -57,6 +57,7 @@
     <footer class="main-footer">
         <!-- Aquí va el contenido del pie de página -->
     </footer>
+    
     <link rel="stylesheet" href="../css/MenuRest.css">
 </body>
 
