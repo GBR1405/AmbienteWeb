@@ -295,34 +295,23 @@ body {
 /* Estilos para InfoRestaurante.css */
 
 .restaurants-section {
-    margin-top: 20px;
-}
-
-.restaurants-section h1 {
-    font-size: 2em;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.restaurants-section hr {
-    border: 0;
-    height: 1px;
-    background: #e2e6ea;
-    margin: 20px 0;
+    padding: 40px 20px;
+    background-color: #f7f7f7;
 }
 
 .cards-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px; /* Espacio entre cartas */
+    gap: 20px;
 }
 
 .restaurant-card {
-    flex: 1 1 calc(33.333% - 20px); /* Ajuste automático de ancho con espacio entre cartas */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    background-color: #fff;
+    width: 100%;
+    max-width: 300px;
 }
 
 .restaurant-card .card-body {
@@ -335,88 +324,18 @@ body {
 }
 
 .restaurant-card .card-text {
-    margin-bottom: 10px;
+    font-size: 1em;
+    margin-bottom: 15px;
 }
 
-.restaurant-card .btn {
-    display: block;
-    width: 100%;
-    text-align: center;
+.restaurant-card .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
 }
 
-/* Pie de página */
-.main-footer {
-    background-color: #f8f9fa;
-    padding: 20px;
-    text-align: center;
-    border-top: 1px solid #e2e6ea;
+.restaurant-card .btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
 }
 
-/* Estilos para InfoRestaurante.css */
 
-.restaurants-section {
-    margin-top: 20px;
-}
-
-.restaurants-section h1 {
-    font-size: 2em;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.restaurants-section hr {
-    border: 0;
-    height: 1px;
-    background: #e2e6ea;
-    margin: 20px 0;
-}
-
-.cards-container-section {
-    display: flex;
-    flex-direction: column; /* Cambia a columna para apilar las cartas verticalmente */
-    gap: 20px; /* Espacio entre cartas */
-}
-
-.restaurant-card {
-    display: flex;
-    align-items: center; /* Alinea los elementos en la carta verticalmente */
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: #fff;
-}
-
-.restaurant-card .card-body {
-    flex: 1; /* Permite que el cuerpo de la carta ocupe el espacio restante */
-}
-
-.restaurant-card .card-title {
-    font-size: 1.25em;
-    margin-bottom: 10px;
-}
-
-.restaurant-card .card-text {
-    margin-bottom: 10px;
-}
-
-.restaurant-card .btn {
-    display: block;
-    width: 100%;
-    text-align: center;
-}
-
-.restaurant-card img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover; /* Recorta la imagen si es más grande */
-    margin-left: 20px;
-}
-
-/* Pie de página */
-.main-footer {
-    background-color: #f8f9fa;
-    padding: 20px;
-    text-align: center;
-    border-top: 1px solid #e2e6ea;
-}
