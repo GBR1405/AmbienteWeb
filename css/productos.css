@@ -1,0 +1,87 @@
+/* productos.css */
+
+.product-container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.product-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #008000;
+}
+
+.product-list ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.product-list li {
+    flex: 1 1 calc(33.333% - 40px);
+    background: #f4f4f4;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.product-list li img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.product-list li p {
+    font-size: 16px;
+    color: #333;
+}
+
+/* productos-admin.css */
+
+.product-admin-form {
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.product-admin-form h3 {
+    text-align: center;
+    color: #008000;
+    margin-bottom: 20px;
+}
+
+.product-admin-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.product-admin-form input[type="text"],
+.product-admin-form input[type="number"],
+.product-admin-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.product-admin-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #008000;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.product-admin-form button:hover {
+    background-color: #006600;
+}

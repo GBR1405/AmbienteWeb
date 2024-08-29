@@ -1,0 +1,25 @@
+.history-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.history-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #008000;
+}
+
+.order-history ul {
+    list-style: none;
+    padding: 0;
+}
+
+.order-history li {
+    background: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    color: #333;
+}
