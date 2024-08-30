@@ -8,10 +8,7 @@ include './Menu.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TicoGourmet</title>
-    <link rel="stylesheet" href="../css/Header.css">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../js/usuarios.js"></script>
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
 <header class="main-header">
@@ -35,7 +32,7 @@ include './Menu.php';
         </div>
     </header>
 
-    <section class="food-search">
+    <section class="main-food-search">
         <div class="food-search-container">
             <h2><span class="orange-text">Bienvenido</span> al mundo de sabor donde podrás pedir y llevar donde sea aquel sabor que tanto te gusta</h2>
             <p>Somos una aplicación nacional, nuestra misión es ayudar a todos los que quieran digitalizarse</p>
@@ -43,10 +40,10 @@ include './Menu.php';
         </div>
     </section>
 
-    <section class="categories-section">
+    <section class="main-categories-section">
         <h2 class="categories-title">Las categorías que tenemos</h2>
-        <div class="categories-carousel-container">
-            <div class="categories-carousel">
+        <div class="main-carousel-container">
+            <div class="main-carousel">
                 <div class="carousel-track">
                     <div class="card">
                         <img src="https://static.vecteezy.com/system/resources/thumbnails/025/076/438/small/pizza-isolated-illustration-ai-generative-png.png" alt="Pizza">
@@ -69,27 +66,27 @@ include './Menu.php';
                         <p>Comida Típica</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1689/1689219.png" alt="Bebidas">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1689/1689219.png" alt="Comida Típica">
                         <p>Bebidas</p>
                     </div>
                     <div class="card">
-                        <img src="https://images.vexels.com/media/users/3/293611/isolated/preview/05031444d08fa7d4501fa5c763c256c2-tres-piezas-de-pollo-frito-brillante.png" alt="Pollo">
+                        <img src="https://images.vexels.com/media/users/3/293611/isolated/preview/05031444d08fa7d4501fa5c763c256c2-tres-piezas-de-pollo-frito-brillante.png" alt="Comida Típica">
                         <p>Pollo</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn-icons-png.flaticon.com/512/7649/7649300.png" alt="Ensaladas">
+                        <img src="https://cdn-icons-png.flaticon.com/512/7649/7649300.png" alt="Comida Típica">
                         <p>Ensaladas</p>
                     </div>
                     <div class="card">
-                        <img src="https://www.pngall.com/wp-content/uploads/2018/04/Soup-Free-Download-PNG.png" alt="Sopas">
+                        <img src="https://www.pngall.com/wp-content/uploads/2018/04/Soup-Free-Download-PNG.png" alt="Comida Típica">
                         <p>Sopas</p>
                     </div>
                     <div class="card">
-                        <img src="https://cdn3d.iconscout.com/3d/premium/thumb/tamago-sushi-6339305-5221208.png?f=webp" alt="Asiatico">
-                        <p>Asiático</p>
+                        <img src="https://cdn3d.iconscout.com/3d/premium/thumb/tamago-sushi-6339305-5221208.png?f=webp" alt="Comida Típica">
+                        <p>Asiatico</p>
                     </div>
                     <div class="card">
-                        <img src="https://images.vexels.com/content/199351/preview/falafel-salad-arabic-food-illustration-9927d1.png" alt="Bowls">
+                        <img src="https://images.vexels.com/content/199351/preview/falafel-salad-arabic-food-illustration-9927d1.png" alt="Comida Típica">
                         <p>Bowls</p>
                     </div>
                 </div>
@@ -99,7 +96,7 @@ include './Menu.php';
         </div>
     </section>
 
-    <section class="map">
+    <section class="main-map">
         <div class="map-container">
             <h2>Ubicación</h2>
             <iframe 
@@ -113,14 +110,15 @@ include './Menu.php';
         </div>
     </section>
     
-    <footer class="footer-container">
+
+    <footer class="main-footer">
         <div class="footer-content">
             <div class="footer-section about">
                 <h2>Sobre nosotros</h2>
                 <p>Somos una empresa comprometida con el bienestar de la cultura culinaria, enfocándonos en el Sabor Tico y la cultura en cada platillo.</p>
             </div>
             <div class="footer-section links">
-                <h2>Encuentra</h2>
+                <h2>Encuéntranos</h2>
                 <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Services</a></li>
@@ -129,9 +127,9 @@ include './Menu.php';
                 </ul>
             </div>
             <div class="footer-section contact">
-                <h2>Contact Us</h2>
+                <h2>Contáctanos</h2>
                 <p><i class="fas fa-phone-alt"></i> +506 67489300</p>
-                <p><i class="fas fa-map-marker-alt"></i> San Jose, Costa Rica, Aranjuez</p>
+                <p><i class="fas fa-map-marker-alt"></i> San José, Costa Rica, Aranjuez</p>
                 <p><i class="fas fa-envelope"></i> TicoGourmet@gmail.com</p>
             </div>
         </div>
@@ -140,8 +138,6 @@ include './Menu.php';
         </div>
     </footer>
 
-
     <script src="../js/index.js"></script>
-    <link rel="stylesheet" href="../css/Header.css">
 </body>
 </html>

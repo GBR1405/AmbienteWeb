@@ -13,7 +13,7 @@ if ($result->num_rows > 0) {
                 <td>{$row['Apellido']}</td>
                 <td>{$row['Email']}</td>
                 <td>{$row['Telefono']}</td>
-                <td><button class='btn btn-primary btn-sm'>Editar</button></td>
+                <td><td><button class='btn btn-primary btn-sm edit-btn' data-id='{$row['ID_Usuario']}'>Editar</button></td>
               </tr>";
     }
 } else {

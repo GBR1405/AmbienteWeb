@@ -10,9 +10,10 @@ include './Menu.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrar Usuarios - TicoGourmet</title>
     <link rel="stylesheet" href="../css/Pagusuario.css">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../js/usuarios.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/usuarioJS.js"></script>
 </head>
 
 <body>
@@ -65,16 +66,21 @@ include './Menu.php';
     </div>
 
     <!-- Modal para agregar usuario -->
-    <div id="add-user-modal" class="modal">
-        <div class="modal-dialog">
+    <div id="add-user-modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Agregar Usuario</h5>
-                    <button type="button" class="close" data-dismiss="modal">&times;"></button>
+                    <h5 class="modal-title">Añadir Usuario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <form id="add-user-form">
-                        <!-- Campos del formulario -->
+                        <div class="form-group">
+                            <label for="id_usuario">ID Usuario:</label>
+                            <input type="text" class="form-control" id="id_usuario" name="id_usuario" disabled>
+                        </div>
                         <div class="form-group">
                             <label for="username">Username:</label>
                             <input type="text" class="form-control" id="username" name="username" required>
@@ -99,12 +105,90 @@ include './Menu.php';
                             <label for="password">Contraseña:</label>
                             <input type="password" class="form-control" id="password" name="password" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Guardar Usuario</button>
+                        <div class="form-group">
+                            <label for="genero">Género</label>
+                            <select id="genero" class="form-control" name="genero">
+                                <!-- Opciones se cargarán aquí -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="rol">Rol</label>
+                            <select id="rol" class="form-control" name="rol">
+                                <!-- Opciones se cargarán aquí -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="estado">Estado</label>
+                            <select id="estado" class="form-control" name="estado">
+                                <!-- Opciones se cargarán aquí -->
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <div id="edit-user-modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Usuario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="edit-user-form">
+                        <input type="hidden" id="edit-user-id" name="id_usuario">
+                        <div class="form-group">
+                            <label for="edit-username">Username:</label>
+                            <input type="text" class="form-control" id="edit-username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-nombre">Nombre:</label>
+                            <input type="text" class="form-control" id="edit-nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-apellido">Apellido:</label>
+                            <input type="text" class="form-control" id="edit-apellido" name="apellido" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-email">Email:</label>
+                            <input type="email" class="form-control" id="edit-email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-telefono">Teléfono:</label>
+                            <input type="text" class="form-control" id="edit-telefono" name="telefono" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-genero">Género</label>
+                            <select id="edit-genero" class="form-control" name="genero">
+                                <!-- Opciones se cargarán aquí -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-rol">Rol</label>
+                            <select id="edit-rol" class="form-control" name="rol">
+                                <!-- Opciones se cargarán aquí -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-estado">Estado</label>
+                            <select id="edit-estado" class="form-control" name="estado">
+                                <!-- Opciones se cargarán aquí -->
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 </body>
 
 </html>
