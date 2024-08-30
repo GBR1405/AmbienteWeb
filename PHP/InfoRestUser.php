@@ -15,10 +15,11 @@ include './menu.php';
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../js/InfoRestUser.js"></script> <!-- Incluye tu archivo JS -->
+    <link rel="stylesheet" href="../css/comentarios.css">
 </head>
 
 <body>
-<header class="main-header">
+    <header class="main-header">
         <div class="main-container">
             <div class="main-content">
                 <div class="logo">
@@ -63,6 +64,23 @@ include './menu.php';
             <div class="product-list" id="product-list">
                 <!-- Los productos serán cargados aquí con JavaScript -->
             </div>
+            <div class="comments-section">
+            <h2>Deja tu comentario</h2>
+            <form id="comment-form">
+                <div id="star-rating">
+                    <span class="rating-star">&#9733;</span>
+                    <span class="rating-star">&#9733;</span>
+                    <span class="rating-star">&#9733;</span>
+                    <span class="rating-star">&#9733;</span>
+                    <span class="rating-star">&#9733;</span>
+                </div>
+                <textarea id="comment-text" placeholder="Escribe tu comentario aquí..."></textarea>
+                <input type="hidden" id="rating" name="rating" value="0">
+                <button type="submit">Enviar Comentario</button>
+            </form>
+
+            <div id="comment-list"></div>
+        </div>
         </div>
     </section>
 
@@ -91,10 +109,11 @@ include './menu.php';
     </footer>
 
     <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const restaurantId = urlParams.get('id');
         $(document).ready(function() {
             // Obtener el ID del restaurante desde la URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const restaurantId = urlParams.get('id');
+            
 
             if (!restaurantId) {
                 console.error('Error: ID del restaurante no proporcionado.');
@@ -180,6 +199,87 @@ include './menu.php';
                 }
             });
         });
+
+        const commentForm = $('#comment-form');
+        const commentText = $('#comment-text');
+        const ratingStars = $('#star-rating .rating-star');
+        let currentRating = 0;
+
+        ratingStars.on('click', function() {
+            const index = $(this).index() + 1;
+            currentRating = index;
+            ratingStars.removeClass('filled');
+            ratingStars.slice(0, index).addClass('filled');
+            $('#rating').val(currentRating);
+        });
+
+        // Función para manejar el envío del formulario
+        commentForm.on('submit', function(e) {
+        e.preventDefault();
+
+        if (currentRating === 0 || commentText.val().trim() === '') {
+            alert('Por favor, completa todos los campos.');
+            return;
+        }
+
+        const formData = new FormData(commentForm[0]);
+        formData.append('rating', currentRating);
+        formData.append('id_restaurante', restaurantId);
+        formData.append('comentario', commentText.val());
+
+        $.ajax({
+            url: '../PHP/comentarios.php',
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                const data = JSON.parse(response);
+                if (data.success) {
+                    loadComments();  // Cargar los comentarios después de un nuevo comentario
+                    commentForm[0].reset();
+                    currentRating = 0;
+                    ratingStars.removeClass('filled');
+                } else {
+                    alert(data.error);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('AJAX Error: ', status, error);
+                console.log(xhr.responseText);
+            }
+        });
+    });
+
+        // Función para cargar los comentarios
+        function loadComments() {
+            $.ajax({
+                url: '../PHP/comentarios.php',
+                method: 'GET',
+                data: {
+                    id_restaurante: restaurantId
+                },
+                success: function(response) {
+                    const comments = JSON.parse(response);
+                    $('#comment-list').empty();
+                    comments.forEach(comment => {
+                        $('#comment-list').append(`
+                        <div class="comment-item">
+                            <strong>${comment.Nombre}</strong>
+                            <p>${comment.Comentario}</p>
+                            <span>Rating: ${comment.Rating}</span>
+                        </div>
+                    `);
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error('AJAX Error: ', status, error);
+                    console.log(xhr.responseText);
+                }
+            });
+        }
+
+        loadComments();
     </script>
 </body>
 
