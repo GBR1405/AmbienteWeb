@@ -1,77 +1,77 @@
-// comentarios.js
+$(document).ready(function() {
+    const ratingStars = $('.rating-star');
+    const commentForm = $('#comment-form');
+    const commentList = $('#comment-list');
+    let currentRating = 0;
 
-document.addEventListener('DOMContentLoaded', () => {
-    const stars = document.querySelectorAll('.star');
-    const ratingInput = document.getElementById('rating');
-    
-    // Función para actualizar las estrellas basadas en el rating
-    function updateStars(rating) {
-        stars.forEach(star => {
-            if (parseInt(star.getAttribute('data-value')) <= rating) {
-                star.classList.add('selected');
-            } else {
-                star.classList.remove('selected');
-            }
-        });
-    }
-
-    // Inicializar las estrellas según el valor de rating
-    updateStars(parseInt(ratingInput.value));
-
-    // Manejar el clic en las estrellas para seleccionar la calificación
-    stars.forEach(star => {
-        star.addEventListener('click', function() {
-            const value = parseInt(this.getAttribute('data-value'));
-            ratingInput.value = value;
-            updateStars(value);
-        });
-
-        // Añadir clase de hover a las estrellas
-        star.addEventListener('mouseover', function() {
-            const value = parseInt(this.getAttribute('data-value'));
-            stars.forEach(star => {
-                if (parseInt(star.getAttribute('data-value')) <= value) {
-                    star.classList.add('hovered');
-                } else {
-                    star.classList.remove('hovered');
-                }
-            });
-        });
-
-        star.addEventListener('mouseout', function() {
-            stars.forEach(star => {
-                star.classList.remove('hovered');
-            });
+    // Manejo de las estrellas de calificación
+    ratingStars.on('mouseover', function() {
+        const index = $(this).index();
+        ratingStars.each(function(i) {
+            $(this).toggleClass('filled', i <= index);
         });
     });
 
-    // Manejar el envío del formulario
-    document.getElementById('comentario-form').addEventListener('submit', function(event) {
-        event.preventDefault();
+    ratingStars.on('mouseout', function() {
+        ratingStars.each(function(i) {
+            $(this).toggleClass('filled', i < currentRating);
+        });
+    });
 
-        const formData = new FormData(this);
+    ratingStars.on('click', function() {
+        currentRating = $(this).index() + 1;
+        ratingStars.each(function(i) {
+            $(this).toggleClass('filled', i < currentRating);
+        });
+    });
 
-        fetch('Comentarios.php', {
+    // Enviar el comentario
+    commentForm.on('submit', function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(commentForm[0]);
+        formData.append('rating', currentRating);
+
+        $.ajax({
+            url: '../PHP/comentarios.php',
             method: 'POST',
-            body: formData
-        })
-        .then(response => response.text())
-        .then(data => {
-            alert(data); // Mensaje de éxito o error
-            if (data.includes('exitosamente')) {
-                // Actualizar la lista de comentarios
-                actualizarComentarios();
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                const data = JSON.parse(response);
+                if (data.success) {
+                    loadComments();
+                    commentForm[0].reset();
+                    currentRating = 0;
+                    ratingStars.removeClass('filled');
+                } else {
+                    alert(data.error);
+                }
             }
         });
     });
 
-    function actualizarComentarios() {
-        const idRestaurante = document.getElementById('id_restaurante').value;
-
-        fetch('Comentarios.php?id_restaurante=' + idRestaurante)
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('comentarios').innerHTML = data;
+    // Cargar los comentarios
+    function loadComments() {
+        $.ajax({
+            url: '../PHP/comentarios.php',
+            method: 'GET',
+            success: function(response) {
+                const comments = JSON.parse(response);
+                commentList.empty();
+                comments.forEach(function(comment) {
+                    const ratingStars = '★'.repeat(comment.Rating) + '☆'.repeat(5 - comment.Rating);
+                    commentList.append(`
+                        <div class="comment-item">
+                            <div class="rating">${ratingStars}</div>
+                            <p><strong>${comment.Nombre}</strong>: ${comment.Comentario}</p>
+                        </div>
+                    `);
+                });
+            }
         });
     }
+
+    loadComments();
 });

@@ -1,19 +1,40 @@
 <?php
+include './db.php';
 include './Menu.php';
 
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "ticogourmet";
-
-// Conexión a la base de datos
-$conn = new mysqli($servername, $username, $password, $database);
-
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
+
+if (!isset($_SESSION['ID_Usuario'])) {
+    http_response_code(403);
+    echo json_encode(['error' => 'No se ha iniciado sesión o el usuario no está definido.']);
+    exit;
+}
+
+$id_usuario = $_SESSION['ID_Usuario'];
+
+if (!$conn) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Error de conexión a la base de datos.']);
+    exit;
+}
+
+// Obtener ID del restaurante
+$query_restaurante = "SELECT ID_Restaurante FROM restaurante_tb WHERE ID_Usuario = ?";
+$stmt_restaurante = $conn->prepare($query_restaurante);
+$stmt_restaurante->bind_param("i", $id_usuario);
+$stmt_restaurante->execute();
+$result_restaurante = $stmt_restaurante->get_result();
+$row_restaurante = $result_restaurante->fetch_assoc();
+
+if (!$row_restaurante) {
+    http_response_code(404);
+    echo json_encode(['error' => 'No se encontró un restaurante asociado a este usuario.']);
+    exit;
+}
+
+$id_restaurante = $row_restaurante['ID_Restaurante'];
 
 // Obtener horarios
 $horarios = [];
@@ -30,6 +51,7 @@ $rol_result = $conn->query($rol_query);
 while ($row = $rol_result->fetch_assoc()) {
     $roles[] = $row;
 }
+
 // Manejar envíos de formularios para agregar o editar trabajadores
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = isset($_POST['id']) ? $_POST['id'] : '';
@@ -42,13 +64,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id_estado = 1; 
 
     if ($id) {
-        $sql = "UPDATE planilla SET Nombre=?, Apellido=?, Salario=?, ID_Horario=?, Telefono=?, ID_RolPlanilla=?, ID_Estado=? WHERE ID_Planilla=?";
+        // Actualizar trabajador
+        $sql = "UPDATE planilla SET Nombre=?, Apellido=?, Salario=?, ID_Horario=?, Telefono=?, ID_RolPlanilla=?, ID_Estado=? WHERE ID_Planilla=? AND ID_Restaurante=?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssdiisii", $nombre, $apellido, $salario, $id_horario, $telefono, $id_rol, $id_estado, $id);
+        $stmt->bind_param("ssdiisii", $nombre, $apellido, $salario, $id_horario, $telefono, $id_rol, $id_estado, $id, $id_restaurante);
     } else {
-        $sql = "INSERT INTO planilla (Nombre, Apellido, Salario, ID_Horario, Telefono, ID_RolPlanilla, ID_Estado) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        // Insertar nuevo trabajador
+        $sql = "INSERT INTO planilla (Nombre, Apellido, Salario, ID_Horario, Telefono, ID_RolPlanilla, ID_Estado, ID_Restaurante) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssdiisi", $nombre, $apellido, $salario, $id_horario, $telefono, $id_rol, $id_estado);
+        $stmt->bind_param("ssdiisii", $nombre, $apellido, $salario, $id_horario, $telefono, $id_rol, $id_estado, $id_restaurante);
     }
 
     if ($stmt->execute()) {
@@ -62,9 +86,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 // Manejar eliminación de trabajadores
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
-    $sql = "DELETE FROM planilla WHERE ID_Planilla=?";
+    $sql = "DELETE FROM planilla WHERE ID_Planilla=? AND ID_Restaurante=?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $id);
+    $stmt->bind_param("ii", $id, $id_restaurante);
 
     if ($stmt->execute()) {
         echo "Registro eliminado correctamente";
@@ -79,9 +103,9 @@ if (isset($_GET['delete'])) {
 // Obtener detalles de un trabajador para editar
 if (isset($_GET['edit'])) {
     $id = $_GET['edit'];
-    $sql = "SELECT * FROM planilla WHERE ID_Planilla=?";
+    $sql = "SELECT * FROM planilla WHERE ID_Planilla=? AND ID_Restaurante=?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $id);
+    $stmt->bind_param("ii", $id, $id_restaurante);
     $stmt->execute();
     $result = $stmt->get_result();
     $worker = $result->fetch_assoc();
@@ -93,8 +117,11 @@ if (isset($_GET['edit'])) {
 
 // Obtener todos los trabajadores para mostrar en la tabla
 if (isset($_GET['list']) && $_GET['list'] == 'true') {
-    $sql = "SELECT * FROM planilla";
-    $result = $conn->query($sql);
+    $sql = "SELECT * FROM planilla WHERE ID_Restaurante=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id_restaurante);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     while ($row = $result->fetch_assoc()) {
         echo '<tr>';

@@ -19,12 +19,24 @@ $(document).ready(function() {
     $('#workerForm').on('submit', function(e) {
         e.preventDefault();
         var id = $('#workerId').val();
-        var url = id ? './planilla.php?edit=' + id : './planilla.php';
-        $.post(url, $(this).serialize(), function(response) {
-            alert(response);
-            $('#workerModal').hide();
-            loadWorkers();
-        });
+        var url = './planilla.php';
+        var data = $(this).serialize();
+
+        if (id) {
+            // Actualizar trabajador
+            $.post(url, data, function(response) {
+                alert(response);
+                $('#workerModal').hide();
+                loadWorkers();
+            });
+        } else {
+            // Agregar nuevo trabajador
+            $.post(url, data, function(response) {
+                alert(response);
+                $('#workerModal').hide();
+                loadWorkers();
+            });
+        }
     });
 
     // Editar trabajador

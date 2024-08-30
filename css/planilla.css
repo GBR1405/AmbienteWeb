@@ -157,15 +157,15 @@ table th {
 
 /* Modal styles */
 .modal {
-    display: none; /* Ocultar el modal por defecto */
-    position: fixed; /* Fijo para que esté siempre en la misma posición */
-    z-index: 1000; /* Asegúrate de que el modal esté por encima de otros elementos */
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
     left: 0;
     top: 0;
-    width: 100%; /* Ancho completo */
-    height: 100%; /* Alto completo */
-    overflow: auto; /* Añade desplazamiento si el contenido es más alto que la ventana */
-    background-color: rgba(0, 0, 0, 0.4); /* Fondo con opacidad */
+    width: 100%; 
+    height: 100%; 
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); 
 }
 
 .modal.show {
@@ -174,17 +174,17 @@ table th {
 
 .modal-content {
     background-color: #fefefe;
-    margin: 5% auto; /* Margen automático para centrar el modal */
+    margin: 5% auto; 
     padding: 20px;
     border: 1px solid #888;
-    width: 90%; /* Ancho del modal con un margen en pantallas grandes */
-    max-width: 800px; /* Ancho máximo del modal */
-    height: auto; /* Alto automático */
-    max-height: 90%; /* Alto máximo del modal */
-    overflow-y: auto; /* Añade desplazamiento si el contenido es más alto que el modal */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
-    animation: fadeIn 0.3s; /* Animación al mostrar el modal */
+    width: 90%; 
+    max-width: 800px; 
+    height: auto; 
+    max-height: 90%; 
+    overflow-y: auto;
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    animation: fadeIn 0.3s; 
 }
 
 @keyframes fadeIn {
@@ -200,7 +200,7 @@ table th {
 
 .modal-content h2 {
     margin-top: 0;
-    font-size: 22px; /* Aumenta el tamaño del título */
+    font-size: 22px; 
     color: #333;
 }
 
@@ -224,7 +224,7 @@ table th {
 }
 
 .modal form label {
-    margin: 15px 0 5px; /* Ajusta el margen para mayor separación */
+    margin: 15px 0 5px; 
     font-weight: bold;
     color: #333;
 }
@@ -232,7 +232,7 @@ table th {
 .modal form input[type="text"],
 .modal form input[type="number"],
 .modal form select {
-    padding: 12px; /* Aumenta el padding */
+    padding: 12px; 
     border: 1px solid #ddd;
     border-radius: 4px;
     margin-bottom: 15px;
@@ -240,11 +240,11 @@ table th {
 }
 
 .modal form button {
-    padding: 12px 25px; /* Aumenta el padding */
-    font-size: 18px; /* Aumenta el tamaño del texto */
+    padding: 12px 25px; 
+    font-size: 18px; 
     color: #fff;
     border: none;
-    border-radius: 5px; /* Aumenta el radio de borde para mayor suavidad */
+    border-radius: 5px; 
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -272,10 +272,9 @@ table th {
 #cancelDelete:hover {
     background-color: #5a6268;
 }
-
 @media (max-width: 768px) {
     .modal-content {
         width: 95%;
-        padding: 20px; /* Ajusta el padding para pantallas pequeñas */
+        padding: 20px;
     }
 }

@@ -15,6 +15,9 @@ include './menu.php';
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../js/InfoRestUser.js"></script> <!-- Incluye tu archivo JS -->
+    <link rel="stylesheet" href="../css/comentarios.css">
+    <script src="../js/comentarios.js"></script>
+
 </head>
 
 <body>
@@ -69,6 +72,23 @@ include './menu.php';
                 <!-- Los productos serán cargados aquí con JavaScript -->
             </div>
         </div>
+        <div class="comments-section">
+        <h2>Deja tu comentario</h2>
+            <form id="comment-form">
+        <div id="star-rating">
+            <span class="rating-star">&#9733;</span>
+            <span class="rating-star">&#9733;</span>
+            <span class="rating-star">&#9733;</span>
+            <span class="rating-star">&#9733;</span>
+            <span class="rating-star">&#9733;</span>
+        </div>
+        <textarea id="comment-text" placeholder="Escribe tu comentario aquí..."></textarea>
+        <input type="hidden" id="rating" name="rating" value="0">
+        <button type="submit">Enviar Comentario</button>
+    </form>
+
+        <div id="comment-list"></div>
+    </div>
     </section>
 
     <footer class="footer-container">
