@@ -5,7 +5,7 @@ function getMenu() {
     $menu = array(
         array("url" => "./MenuRest.php", "name" => "MENU"),
         array("url" => "contacto.php", "name" => "CONTACTO"),
-        array("url" => "nosotros.php", "name" => "NOSOTROS"),
+        array("url" => "./nosotros.php", "name" => "NOSOTROS"),
     );
 
     if (isset($_SESSION["usuario"]) && $_SESSION["usuario"] != "") {
