@@ -16,7 +16,7 @@ function getMenu() {
             case 4: // Asumiendo 1 es Restaurante
                 $menu[] = array("url" => "./infoPlatillos.php", "name" => "PLATILLOS");
                 $menu[] = array("url" => "pedidos.php", "name" => "PEDIDOS");
-                $menu[] = array("url" => "planilla.php", "name" => "PLANILLA");
+                $menu[] = array("url" => "./planilla.php", "name" => "PLANILLA");
                 $menu[] = array("url" => "reservas.php", "name" => "RESERVAS");
                 break;
             

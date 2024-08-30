@@ -1,13 +1,13 @@
 <?php
-
-
 $servername = "localhost";
-$username ="root";
-$password = "Pacman123";
-$database = "TicoGourmet";
+$username = "root";
+$password = "";
+$database = "ticogourmet";
 
 $conn = new mysqli($servername, $username, $password, $database);
 
 if($conn->connect_error){
-    die("Conexion fallida: ".$conn->connect_error);
+    die("Conexión fallida: " . $conn->connect_error);
 }
+
+?>
