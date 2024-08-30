@@ -17,7 +17,7 @@ function getMenu() {
                 $menu[] = array("url" => "./infoPlatillos.php", "name" => "PLATILLOS");
                 $menu[] = array("url" => "./PedidosRest.php", "name" => "PEDIDOS");
                 $menu[] = array("url" => "./planilla.php", "name" => "PLANILLA");
-                $menu[] = array("url" => "reservas.php", "name" => "RESERVAS");
+                $menu[] = array("url" => "./MesasRest.php", "name" => "RESERVAS");
                 break;
             
             case 3: // Asumiendo 2 es Proveedor

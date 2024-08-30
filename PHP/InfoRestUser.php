@@ -56,31 +56,35 @@ include './menu.php';
             </div>
         </div>
         <div class="menu-section">
+            <button class="btn btn-primary" onclick="openReserveModal()">Reservar Mesa</button>
             <h2 class="menu-title">Menú</h2>
             <div class="search-bar">
                 <input type="text" placeholder="Buscar producto...">
                 <button>Buscar</button>
+
             </div>
+
             <div class="product-list" id="product-list">
                 <!-- Los productos serán cargados aquí con JavaScript -->
             </div>
             <div class="comments-section">
-            <h2>Deja tu comentario</h2>
-            <form id="comment-form">
-                <div id="star-rating">
-                    <span class="rating-star">&#9733;</span>
-                    <span class="rating-star">&#9733;</span>
-                    <span class="rating-star">&#9733;</span>
-                    <span class="rating-star">&#9733;</span>
-                    <span class="rating-star">&#9733;</span>
-                </div>
-                <textarea id="comment-text" placeholder="Escribe tu comentario aquí..."></textarea>
-                <input type="hidden" id="rating" name="rating" value="0">
-                <button type="submit">Enviar Comentario</button>
-            </form>
+                <h2>Deja tu comentario</h2>
+                <form id="comment-form">
+                    <div id="star-rating">
+                        <span class="rating-star">&#9733;</span>
+                        <span class="rating-star">&#9733;</span>
+                        <span class="rating-star">&#9733;</span>
+                        <span class="rating-star">&#9733;</span>
+                        <span class="rating-star">&#9733;</span>
+                    </div>
+                    <textarea id="comment-text" placeholder="Escribe tu comentario aquí..."></textarea>
+                    <input type="hidden" id="rating" name="rating" value="0">
+                    <button type="submit">Enviar Comentario</button>
+                </form>
 
-            <div id="comment-list"></div>
-        </div>
+                <div id="comment-list"></div>
+
+            </div>
         </div>
     </section>
 
@@ -108,12 +112,53 @@ include './menu.php';
         </div>
     </footer>
 
+    <div id="reserve-modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Reservar Mesa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="reserve-form">
+                        <div class="form-group">
+                            <label for="mesa-select">Selecciona una mesa:</label>
+                            <select id="mesa-select" class="form-control">
+                                <!-- Las mesas serán cargadas aquí con JavaScript -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="seats-select">Número de asientos:</label>
+                            <select id="seats-select" class="form-control">
+                                <!-- Opciones de 2 a 8 asientos -->
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="reserve-date">Fecha:</label>
+                            <input type="date" id="reserve-date" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Confirmar Reserva</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const restaurantId = urlParams.get('id');
         $(document).ready(function() {
             // Obtener el ID del restaurante desde la URL
-            
+
 
             if (!restaurantId) {
                 console.error('Error: ID del restaurante no proporcionado.');
@@ -215,41 +260,41 @@ include './menu.php';
 
         // Función para manejar el envío del formulario
         commentForm.on('submit', function(e) {
-        e.preventDefault();
+            e.preventDefault();
 
-        if (currentRating === 0 || commentText.val().trim() === '') {
-            alert('Por favor, completa todos los campos.');
-            return;
-        }
-
-        const formData = new FormData(commentForm[0]);
-        formData.append('rating', currentRating);
-        formData.append('id_restaurante', restaurantId);
-        formData.append('comentario', commentText.val());
-
-        $.ajax({
-            url: '../PHP/comentarios.php',
-            method: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function(response) {
-                const data = JSON.parse(response);
-                if (data.success) {
-                    loadComments();  // Cargar los comentarios después de un nuevo comentario
-                    commentForm[0].reset();
-                    currentRating = 0;
-                    ratingStars.removeClass('filled');
-                } else {
-                    alert(data.error);
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error('AJAX Error: ', status, error);
-                console.log(xhr.responseText);
+            if (currentRating === 0 || commentText.val().trim() === '') {
+                alert('Por favor, completa todos los campos.');
+                return;
             }
+
+            const formData = new FormData(commentForm[0]);
+            formData.append('rating', currentRating);
+            formData.append('id_restaurante', restaurantId);
+            formData.append('comentario', commentText.val());
+
+            $.ajax({
+                url: '../PHP/comentarios.php',
+                method: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    const data = JSON.parse(response);
+                    if (data.success) {
+                        loadComments(); // Cargar los comentarios después de un nuevo comentario
+                        commentForm[0].reset();
+                        currentRating = 0;
+                        ratingStars.removeClass('filled');
+                    } else {
+                        alert(data.error);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('AJAX Error: ', status, error);
+                    console.log(xhr.responseText);
+                }
+            });
         });
-    });
 
         // Función para cargar los comentarios
         function loadComments() {
@@ -280,6 +325,43 @@ include './menu.php';
         }
 
         loadComments();
+
+        // Función para abrir el modal de reserva
+        function openReserveModal() {
+        $('#reserve-modal').modal('show');
+
+        $.ajax({
+            url: '../PHP/obtenerMesas.php',
+            method: 'GET',
+            dataType: 'json',
+            data: { id: restaurantId }, // Enviar el ID del restaurante
+            success: function(data) {
+                if (data.error) {
+                    console.error('Error del servidor:', data.error);
+                    return;
+                }
+
+                if (Array.isArray(data.mesas)) {
+                    const mesaSelect = $('#mesa-select');
+                    mesaSelect.empty();
+                    data.mesas.forEach(function(mesa) {
+                        const option = $('<option>', {
+                            value: mesa.id,
+                            text: `Mesa ${mesa.numero} - Estado ${mesa.estado}`
+                        });
+                        mesaSelect.append(option);
+                    });
+                } else {
+                    console.error('Error: Datos de mesas no disponibles.');
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('Error en la solicitud AJAX para obtener mesas:', textStatus, errorThrown);
+            }
+        });
+    }
+
+    $('#open-reserve-modal-btn').click(openReserveModal);
     </script>
 </body>
 
