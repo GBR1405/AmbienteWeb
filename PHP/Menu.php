@@ -17,6 +17,7 @@ function getMenu() {
                 $menu[] = array("url" => "./infoPlatillos.php", "name" => "PLATILLOS");
                 $menu[] = array("url" => "pedidos.php", "name" => "PEDIDOS");
                 $menu[] = array("url" => "planilla.php", "name" => "PLANILLA");
+                $menu[] = array("url" => "inventario.php", "name" => "INVENTARIO");
                 $menu[] = array("url" => "reservas.php", "name" => "RESERVAS");
                 break;
             

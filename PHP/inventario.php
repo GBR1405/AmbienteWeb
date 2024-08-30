@@ -11,21 +11,58 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (!isset($_SESSION['ID_Usuario'])) {
+    die("No se ha iniciado sesión o el usuario no está definido.");
+}
+
+$id_usuario = $_SESSION['ID_Usuario'];
+
+// Obtener el ID del restaurante asociado al usuario
+$query_restaurante = "SELECT ID_Restaurante FROM restaurante_tb WHERE ID_Usuario = ?";
+$stmt_restaurante = $conn->prepare($query_restaurante);
+$stmt_restaurante->bind_param("i", $id_usuario);
+$stmt_restaurante->execute();
+$result_restaurante = $stmt_restaurante->get_result();
+$row_restaurante = $result_restaurante->fetch_assoc();
+
+if (!$row_restaurante) {
+    die("No se encontró un restaurante asociado a este usuario.");
+}
+
+$id_restaurante = $row_restaurante['ID_Restaurante'];
+var_dump($id_restaurante);  // Verifica que el ID del restaurante se ha obtenido correctamente
+
 // Agregar un producto al inventario
 if (isset($_POST['agregar'])) {
     $nombre = $_POST['nombre_producto'];
     $cantidad = $_POST['cantidad'];
     $fecha = $_POST['fecha_adquisicion'];
 
-    $sql = "INSERT INTO inventario (nombre_producto, cantidad, fecha_adquisicion) VALUES ('$nombre', '$cantidad', '$fecha')";
-    $conn->query($sql);
+    $sql = "INSERT INTO inventario (ID_Producto, Cantidad, Fecha_De_Entregado, ID_Restaurante) 
+            VALUES (?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("iisi", $nombre, $cantidad, $fecha, $id_restaurante);
+
+    if ($stmt->execute()) {
+        echo "Producto agregado exitosamente.";
+    } else {
+        echo "Error al agregar el producto: " . $stmt->error;
+    }
+    $stmt->close();
 }
 
 // Eliminar un producto del inventario
 if (isset($_GET['eliminar'])) {
     $id = $_GET['eliminar'];
-    $sql = "DELETE FROM inventario WHERE id = $id";
-    $conn->query($sql);
+    $sql = "DELETE FROM inventario WHERE ID_Inventario = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $stmt->close();
 }
 
 // Editar un producto del inventario
@@ -35,13 +72,24 @@ if (isset($_POST['editar'])) {
     $cantidad = $_POST['cantidad'];
     $fecha = $_POST['fecha_adquisicion'];
 
-    $sql = "UPDATE inventario SET nombre_producto='$nombre', cantidad='$cantidad', fecha_adquisicion='$fecha' WHERE id=$id";
-    $conn->query($sql);
+    $sql = "UPDATE inventario SET ID_Producto=?, Cantidad=?, Fecha_De_Entregado=? WHERE ID_Inventario=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("iisi", $nombre, $cantidad, $fecha, $id);
+
+    if ($stmt->execute()) {
+        echo "Producto actualizado exitosamente.";
+    } else {
+        echo "Error al actualizar el producto: " . $stmt->error;
+    }
+    $stmt->close();
 }
 
 // Obtener inventario
-$sql = "SELECT * FROM inventario";
-$result = $conn->query($sql);
+$sql = "SELECT * FROM inventario WHERE ID_Restaurante = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $id_restaurante);
+$stmt->execute();
+$result = $stmt->get_result();
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +97,7 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <title>Gestión de Inventario</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Añade tu archivo CSS aquí -->
+    <link rel="stylesheet" href="../css/inventario.css"> <!-- Actualiza el path al CSS -->
 </head>
 <body>
     <h1>Gestión de Inventario</h1>
@@ -73,13 +121,13 @@ $result = $conn->query($sql);
         </tr>
         <?php while($row = $result->fetch_assoc()): ?>
         <tr>
-            <td><?php echo $row['id']; ?></td>
-            <td><?php echo $row['nombre_producto']; ?></td>
-            <td><?php echo $row['cantidad']; ?></td>
-            <td><?php echo $row['fecha_adquisicion']; ?></td>
+            <td><?php echo $row['ID_Inventario']; ?></td>
+            <td><?php echo $row['ID_Producto']; ?></td>
+            <td><?php echo $row['Cantidad']; ?></td>
+            <td><?php echo $row['Fecha_De_Entregado']; ?></td>
             <td>
-                <a href="inventario.php?eliminar=<?php echo $row['id']; ?>">Eliminar</a>
-                <a href="inventario.php?editar=<?php echo $row['id']; ?>">Editar</a>
+                <a href="inventario.php?eliminar=<?php echo $row['ID_Inventario']; ?>">Eliminar</a>
+                <a href="inventario.php?editar=<?php echo $row['ID_Inventario']; ?>">Editar</a>
             </td>
         </tr>
         <?php endwhile; ?>
