@@ -1,40 +1,38 @@
+<?php
+include './Menu.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TicoGourmet</title>
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <h1><a href="./index.html" class="logo-link">TicoGourmet 🍔</a></h1>
-            </div>
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="#">MENU</a></li>
-                    <li class="separator">|</li>
-                    <li class="nav-item"><a href="#">CONTACTO</a></li>
-                    <li class="separator">|</li>
-                    <li class="nav-item"><a href="#">RESERVAS</a></li>
-                    <li class="separator">|</li>
-                    <li class="nav-item"><a href="#">NOSOTROS</a></li>
-                </ul>
-            </nav>
-            <div class="right-section">
-                <div class="cart">
-                    <a href="#"><img src="https://cdn.icon-icons.com/icons2/906/PNG/512/shopping-cart_icon-icons.com_69913.png" alt="Cart" class="cart-icon"></a>
+<header class="main-header">
+        <div class="main-container">
+            <div class="main-content">
+                <div class="logo">
+                    <h1><a href="./index.php" class="logo-link">TicoGourmet 🍔</a></h1>
                 </div>
-                <div class="login">
-                    <button id="loginButton" type="button" class="login-button">Iniciar Sesión</button>
-                </div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <?php
+                        $menu = getMenu();
+                        foreach ($menu as $item) {
+                            echo '<li class="nav-item"><a href="' . $item["url"] . '">' . $item["name"] . '</a></li>';
+                            echo '<li class="separator">|</li>';
+                        }
+                        ?>
+                    </ul>
+                </nav>
             </div>
         </div>
     </header>
 
-    <section class="food-search">
+    <section class="main-food-search">
         <div class="food-search-container">
             <h2><span class="orange-text">Bienvenido</span> al mundo de sabor donde podrás pedir y llevar donde sea aquel sabor que tanto te gusta</h2>
             <p>Somos una aplicación nacional, nuestra misión es ayudar a todos los que quieran digitalizarse</p>
@@ -42,11 +40,10 @@
         </div>
     </section>
 
-    <!-- Nueva Sección -->
-    <section class="categories-section">
+    <section class="main-categories-section">
         <h2 class="categories-title">Las categorías que tenemos</h2>
-        <div class="carousel-container">
-            <div class="carousel">
+        <div class="main-carousel-container">
+            <div class="main-carousel">
                 <div class="carousel-track">
                     <div class="card">
                         <img src="https://static.vecteezy.com/system/resources/thumbnails/025/076/438/small/pizza-isolated-illustration-ai-generative-png.png" alt="Pizza">
@@ -99,7 +96,7 @@
         </div>
     </section>
 
-    <section class="map">
+    <section class="main-map">
         <div class="map-container">
             <h2>Ubicación</h2>
             <iframe 
@@ -114,14 +111,14 @@
     </section>
     
 
-    <footer class="footer-container">
+    <footer class="main-footer">
         <div class="footer-content">
             <div class="footer-section about">
-                <h2>Sobre notrosos</h2>
-                <p>Somo una empresa comprometida con el bienestar de la cultura culinaria, enfocandonos en el Sabor Tico y la cultura en cada platillo.</p>
+                <h2>Sobre nosotros</h2>
+                <p>Somos una empresa comprometida con el bienestar de la cultura culinaria, enfocándonos en el Sabor Tico y la cultura en cada platillo.</p>
             </div>
             <div class="footer-section links">
-                <h2>Encuentra</h2>
+                <h2>Encuéntranos</h2>
                 <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Services</a></li>
@@ -130,18 +127,17 @@
                 </ul>
             </div>
             <div class="footer-section contact">
-                <h2>Contact Us</h2>
+                <h2>Contáctanos</h2>
                 <p><i class="fas fa-phone-alt"></i> +506 67489300</p>
-                <p><i class="fas fa-map-marker-alt"></i> San Jose, Costa Rica, Aranjuez</p>
+                <p><i class="fas fa-map-marker-alt"></i> San José, Costa Rica, Aranjuez</p>
                 <p><i class="fas fa-envelope"></i> TicoGourmet@gmail.com</p>
             </div>
         </div>
         <div class="footer-bottom">
-            &copy; 2024 TicoGourmet | Deseñado por Grupo# Ambiente Web 
+            &copy; 2024 TicoGourmet | Diseñado por Grupo# Ambiente Web 
         </div>
     </footer>
 
-
-    <script src="./js/index.js"></script>
+    <script src="../js/index.js"></script>
 </body>
 </html>

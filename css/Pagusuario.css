@@ -1,0 +1,240 @@
+/* Reseteo de estilos */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Fondo de la página */
+body {
+    background-image: url('https://mrwallpaper.com/images/hd/textured-white-paper-439vozmsl9bybc8a.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Contenedor principal */
+.main-container {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.main-header {
+    background-color: white;
+    padding: 20px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.main-content-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+.main-container .main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.main-header .logo h1 {
+    font-family: 'Brush Script MT', cursive;
+    color: #333;
+    margin: 0;
+    font-size: 36px;
+    text-decoration: none;
+}
+
+.main-header .logo-int {
+    font-family: 'Brush Script MT', cursive;
+    color: #333;
+    margin: 0;
+    font-size: 2em;
+    font-weight: bold;
+    display: block;
+}
+
+.main-header .logo-link {
+    font-family: 'Brush Script MT', cursive;
+    color: #333;
+    text-decoration: none;
+    font-size: 36px;
+}
+
+.main-header .logo-link:visited {
+    color: #333;
+}
+
+.main-header .logo-link:hover {
+    text-decoration: none;
+    color: #333;
+}
+
+.main-header .logo-link:active {
+    text-decoration: none;
+    color: #333;
+}
+
+.main-nav {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.main-nav .nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.main-nav .nav-item a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+}
+
+.main-nav .separator {
+    color: #333;
+    font-size: 18px;
+}
+
+/* Estilo del contenedor principal */
+.mt-5 {
+    margin-top: 3rem;
+}
+
+/* Encabezado de la tabla de usuarios */
+.user-table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-table-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#add-user-btn {
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+.user-table-divider {
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-top: 2px solid #333;
+}
+
+/* Estilo de la tabla */
+.table-responsive {
+    margin-bottom: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 15px;
+    text-align: left;
+    border-top: 1px solid #dee2e6;
+}
+
+.table-dark {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.table-dark th {
+    background-color: #454d55;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #495057;
+}
+
+/* Estilo del modal */
+.modal-dialog {
+    max-width: 500px;
+    margin: 30px auto;
+}
+
+.modal-content {
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.close {
+    font-size: 24px;
+    font-weight: bold;
+    background: none;
+    border: none;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+}
+
+.carrito-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.carrito-divider {
+    margin: 20px 0;
+}
+
+.total-container {
+    text-align: right;
+    font-size: 1.5em;
+}

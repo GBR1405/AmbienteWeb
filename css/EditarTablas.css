@@ -1,0 +1,143 @@
+/* Reseteo de estilos */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Fondo de la página */
+body {
+    background-image: url('https://mrwallpaper.com/images/hd/textured-white-paper-439vozmsl9bybc8a.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Contenedor principal */
+.main-container {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.main-header {
+    background-color: white;
+    padding: 20px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.main-content-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+.main-container .main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.main-header .logo h1 {
+    font-family: 'Brush Script MT', cursive;
+    color: #333;
+    margin: 0;
+    font-size: 36px;
+    text-decoration: none;
+}
+
+.main-header .logo-int {
+    font-family: 'Brush Script MT', cursive;
+    color: #333;
+    margin: 0;
+    font-size: 2em;
+    font-weight: bold;
+    display: block;
+}
+
+.main-header .logo-link {
+    font-family: 'Brush Script MT', cursive;
+    color: #333;
+    text-decoration: none;
+    font-size: 36px;
+}
+
+.main-header .logo-link:visited {
+    color: #333;
+}
+
+.main-header .logo-link:hover {
+    text-decoration: none;
+    color: #333;
+}
+
+.main-header .logo-link:active {
+    text-decoration: none;
+    color: #333;
+}
+
+.main-nav {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.main-nav .nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.main-nav .nav-item a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+}
+
+.main-nav .separator {
+    color: #333;
+    font-size: 18px;
+}
+
+/* Tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #333;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #333;
+}
+
+/* Sidebar */
+.sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.sidebar button {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.sidebar button:hover {
+    background-color: #0056b3;
+}
